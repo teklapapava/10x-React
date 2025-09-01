@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 export default function UserProfileFetcher() {
-  const [userData, setUserData] = useState(null); // API-დან მიღებული მონაცემები
-  const [isLoading, setIsLoading] = useState(false); // მონაცემების დატვირთვის კონტროლი
-  const [isError, setIsError] = useState(false); // შეცდომის კონტროლი
-  const [refreshTrigger, setRefreshTrigger] = useState(false); // refresh-ის კონტროლი
+  const [userData, setUserData] = useState(null); 
+  const [isLoading, setIsLoading] = useState(false); 
+  const [isError, setIsError] = useState(false); 
+  const [refreshTrigger, setRefreshTrigger] = useState(false); 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -14,7 +14,7 @@ export default function UserProfileFetcher() {
         const res = await fetch("https://randomuser.me/api/");
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();
-        setUserData(data.results[0]); // პირველ შედეგზე ვყრით
+        setUserData(data.results[0]); 
       } catch (error) {
         console.error(error);
         setIsError(true);
@@ -24,7 +24,7 @@ export default function UserProfileFetcher() {
     };
 
     fetchUser();
-  }, [refreshTrigger]); // გაისმება როგორც dependency refreshTrigger-ის ცვლილებაზე
+  }, [refreshTrigger]); 
 
   return (
     <div style={{ padding: "20px" }}>
